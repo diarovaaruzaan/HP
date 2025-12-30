@@ -6,11 +6,7 @@
 #include <cstdlib>           // библиотека для rand()
 
 using namespace std;         // чтобы не писать std:: перед каждым элементом
-
-// ==========================================================
 // ---------------- GPU MERGE SORT (CUDA) -------------------
-// ==========================================================
-
 // CUDA kernel — выполняется на GPU
 // Каждый поток сливает два подмассива
 __global__ void mergeKernel(int* d_arr, int* d_temp, int size, int width) {
@@ -92,11 +88,7 @@ void mergeSortCUDA(int* arr, int size) {
     cudaFree(d_arr);
     cudaFree(d_temp);
 }
-
-// ==========================================================
 // ---------------- CPU MERGE SORT --------------------------
-// ==========================================================
-
 // Рекурсивная сортировка слиянием на CPU
 void mergeCPU(vector<int>& arr, int l, int r) {
 
@@ -129,11 +121,7 @@ void mergeCPU(vector<int>& arr, int l, int r) {
     for (int x = 0; x < temp.size(); x++)
         arr[l + x] = temp[x];
 }
-
-// ==========================================================
 // ---------------- CPU QUICK SORT --------------------------
-// ==========================================================
-
 void quickSortCPU(vector<int>& arr, int left, int right) {
 
     if (left >= right) return;
@@ -155,11 +143,7 @@ void quickSortCPU(vector<int>& arr, int left, int right) {
     quickSortCPU(arr, left, r);
     quickSortCPU(arr, l, right);
 }
-
-// ==========================================================
 // ---------------- CPU HEAP SORT ---------------------------
-// ==========================================================
-
 void heapify(vector<int>& arr, int n, int i) {
 
     int largest = i;
@@ -189,11 +173,7 @@ void heapSortCPU(vector<int>& arr) {
         heapify(arr, i, 0);
     }
 }
-
-// ==========================================================
 // ------------------------ MAIN ----------------------------
-// ==========================================================
-
 int main() {
 
     // Размеры массивов для тестирования
@@ -252,3 +232,4 @@ int main() {
 
     return 0;
 }
+
