@@ -1,15 +1,3 @@
-// pr4_memory_opt.cu                                                                 // имя файла (можно любое)
-// Практическая №4 (исправленная): корректный вывод и замеры                           // краткое описание
-// - Редукция суммы до 1 значения полностью на GPU                                     // что делает программа
-// - Вариант A: "global-only" (промежуточная редукция в global)                        // вариант 1
-// - Вариант B: "global+shared" (быстрая редукция в shared)                            // вариант 2
-// - Сортировка плиток: local bubble + merge в shared                                  // сортировка по плиткам
-// Замеры: warmup + усреднение N_RUNS (cudaEvent)                                      // как меряем время
-// Сборка (Colab Tesla T4):                                                           // подсказка для сборки
-//   nvcc -O3 -std=c++17 pr4_memory_opt.cu -o pr4 -gencode arch=compute_75,code=sm_75  // команда nvcc
-// Запуск:                                                                             // подсказка для запуска
-//   ./pr4 > results.csv                                                               // сохраняем CSV
-
 #include <cuda_runtime.h>                          // базовые функции CUDA (malloc/copy/ошибки)
 #include <device_launch_parameters.h>              // параметры запуска kernel (blockIdx, threadIdx)
 
